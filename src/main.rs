@@ -89,7 +89,7 @@ fn main() -> ! {
         sm0,
         clocks.peripheral_clock.freq(),);
     
-    let address = 50u8;
+    let address = 50;
     let forward = 0x76u8;
     let reverse = 0x56u8;
 
@@ -99,6 +99,7 @@ fn main() -> ! {
        let (w1, w2) = assemble_packet(address, forward);
        tx.write(w1);
        tx.write(w2);
+       delay.delay_ms(5);
        tx.write(w1);
        tx.write(w2);     
        delay.delay_ms(3000);
@@ -108,6 +109,7 @@ fn main() -> ! {
        let (w1, w2) = assemble_packet(address, reverse);
        tx.write(w1);
        tx.write(w2);
+       delay.delay_ms(5);
        tx.write(w1);
        tx.write(w2);        
        delay.delay_ms(3000);
